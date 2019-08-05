@@ -15,14 +15,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-
 import usb, logging
 
 # Check pyusb dependency
 try:
   from usb import core as _usb_core
-except ImportError, ex:
-  print '''
+except ImportError as ex:
+  print('''
 ------------------------------------------
 | PyUSB was not found or is out of date. |
 ------------------------------------------
@@ -30,7 +29,7 @@ except ImportError, ex:
 Please update PyUSB using pip:
 
 sudo pip install -U -I pip && sudo pip install -U -I pyusb
-'''
+''')
   sys.exit(1)
 
 # USB commands
@@ -66,7 +65,7 @@ class nrf24:
       self.dongle = list(usb.core.find(idVendor=0x1915, idProduct=0x0102, find_all=True))[index]
       self.dongle.set_configuration()
       print(self.dongle)
-    except usb.core.USBError, ex:
+    except usb.core.USBError as ex:
       raise ex
     except:
       raise Exception('Cannot find USB dongle.')
