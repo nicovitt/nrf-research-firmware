@@ -64,7 +64,6 @@ class nrf24:
     try:
       self.dongle = list(usb.core.find(idVendor=0x1915, idProduct=0x0102, find_all=True))[index]
       self.dongle.set_configuration()
-      print(self.dongle)
     except usb.core.USBError as ex:
       raise ex
     except:

@@ -71,3 +71,5 @@ for p in range(2):
 valid_addresses = list(set(valid_addresses))
 for addr in valid_addresses:
   logging.info('Found address {0}'.format(':'.join('{:02X}'.format(ord(b)) for b in addr[::-1])))
+
+common.radio.dongle.reset()
